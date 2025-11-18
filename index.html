@@ -4,12 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Card Profile</title>
-    <!-- Font Awesome -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
-    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
       rel="stylesheet"
@@ -35,32 +33,32 @@
         background-attachment: fixed;
         min-height: 100vh;
         display: flex;
-        overflow: hidden;
+        /* CENTERING FIX STARTS HERE */
+        justify-content: center;
+        align-items: center;
+        /* CENTERING FIX ENDS HERE */
         flex-wrap: wrap;
         padding: 20px;
       }
 
       .card {
         max-width: 340px;
+        width: 100%;
         margin: auto;
-        overflow-y: auto;
         position: relative;
         z-index: 1;
-        overflow-x: hidden;
         background-color: rgba(255, 255, 255, 1);
         display: flex;
         transition: 0.3s;
         flex-direction: column;
         border-radius: 10px;
         box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+        /* FIX: Hidden overflow on parent, scroll on child */
+        overflow: hidden;
       }
 
       .card[data-state="#about"] {
         height: 500px;
-
-        .card-main {
-          padding-top: 0;
-        }
       }
 
       .card[data-state="#contact"] {
@@ -114,10 +112,6 @@
         flex-shrink: 0;
         width: 100%;
         transition: 0.3s;
-
-        * {
-          transition: 0.3s;
-        }
       }
 
       .card-cover {
@@ -179,6 +173,9 @@
         display: flex;
         padding-top: 10px;
         flex-direction: column;
+        /* FIX: Only this section scrolls now */
+        overflow-y: auto;
+        overflow-x: hidden; 
       }
 
       .card-subtitle {
@@ -241,10 +238,9 @@
       .card-buttons {
         display: flex;
         background-color: #fff;
-        margin-top: auto;
-        position: sticky;
-        bottom: 0;
-        left: 0;
+        /* FIX: Removed Sticky, it is now a flex block at the bottom */
+        width: 100%;
+        flex-shrink: 0;
 
         button {
           flex: 1 1 auto;
@@ -421,27 +417,24 @@
             background-image: url('https://www.color-hex.com/palettes/98193.png');
           "
         ></div>
-        <img
-          class="card-avatar"
-          src="ay.jpg"
-          alt="avatar"
-        />
+        <img class="card-avatar" src="ay.jpg" alt="avatar" />
         <h1 class="card-fullname">Archisha Yadav</h1>
         <h2 class="card-jobtitle">Developer | GDSC UI/UX Co-Lead</h2>
       </div>
+      
       <div class="card-main">
         <div class="card-section is-active" id="about">
           <div class="card-content">
             <div class="card-subtitle">ABOUT</div>
             <p class="card-desc">
-              As a B.Tech CSE student with a passion for coding and
-              creativity, I thrive on exploring the intersection of technology
-              and design. Proficient in Python and C, I enjoy tackling complex
-              problems and bringing ideas to life through visual design and
-              communication. Writing is my creative outlet, fueling my curiosity
-              and drive for innovation. Eager to learn and grow, I am excited to
-              connect with like-minded professionals and explore new
-              opportunities in tech and design.
+              As a B.Tech CSE student with a passion for coding and creativity,
+              I thrive on exploring the intersection of technology and design.
+              Proficient in Python and C, I enjoy tackling complex problems and
+              bringing ideas to life through visual design and communication.
+              Writing is my creative outlet, fueling my curiosity and drive for
+              innovation. Eager to learn and grow, I am excited to connect with
+              like-minded professionals and explore new opportunities in tech
+              and design.
             </p>
           </div>
 
@@ -491,16 +484,12 @@
                   Worked with seaborn, matplotlib libraries in Python.
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="card-item" data-year="2024">
+              <div class="card-item" data-year="2024">
                 <div class="card-item-title">
-                 Cryptography Summer School
+                  Cryptography Summer School
                   <span>at IIT Bombay</span>
                 </div>
-                <div class="card-item-desc">
-        
-                </div>
+                <div class="card-item-desc"></div>
               </div>
             </div>
           </div>
@@ -557,17 +546,19 @@
                 </svg>
                 archishay20@gmail.com
               </div>
-              <a href="https://www.linkedin.com/in/archisha-yadav-63990b290/">
+              <a
+                href="https://www.linkedin.com/in/archisha-yadav-63990b290/"
+              >
                 <button class="contact-me">WORK TOGETHER</button>
               </a>
             </div>
           </div>
         </div>
-        <div class="card-buttons">
-          <button data-section="#about" class="is-active">ABOUT</button>
-          <button data-section="#experience">EXPERIENCE</button>
-          <button data-section="#contact">CONTACT</button>
-        </div>
+      </div> 
+      <div class="card-buttons">
+        <button data-section="#about" class="is-active">ABOUT</button>
+        <button data-section="#experience">EXPERIENCE</button>
+        <button data-section="#contact">CONTACT</button>
       </div>
     </div>
     <script>
